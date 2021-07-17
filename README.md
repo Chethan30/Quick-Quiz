@@ -1,4 +1,4 @@
-# quixam
+# quick quiz
 
 A new Flutter application.
 
