@@ -17,10 +17,10 @@ class _leaderboardState extends State<leaderboard> {
     return Scaffold(
       appBar: new AppBar(
         title: new Text(Session_Id.getqname()),
-        backgroundColor: Color.fromRGBO(166, 118, 51, 1),
+        backgroundColor: Colors.deepPurple,
       ),
       body: Container(
-        color: Color.fromRGBO(247, 216, 189, 1),
+        color: Colors.purple.shade50,
         child: FutureBuilder(
           future:
               dbRef.child("LeaderBoard").child(Session_Id.getqname()).once(),
@@ -36,7 +36,7 @@ class _leaderboardState extends State<leaderboard> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: new Text(
-                        "No one has attempted this quiz yet. :(",
+                        "No one has attempted this quiz yet. 😥 ",
                         textAlign: TextAlign.center,
                         style: new TextStyle(
                             fontSize: 30, fontWeight: FontWeight.bold),
@@ -60,9 +60,16 @@ class _leaderboardState extends State<leaderboard> {
                         children: [
                           Text(
                             "Student Name",
-                            style: TextStyle(fontSize: 30),
+                            style: TextStyle(
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.deepPurple),
                           ),
-                          Text("Score", style: TextStyle(fontSize: 30)),
+                          Text("Score",
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.deepPurple)),
                         ]),
                     Divider(),
                     Expanded(
@@ -75,10 +82,17 @@ class _leaderboardState extends State<leaderboard> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(names[index],
-                                      style: TextStyle(fontSize: 25)),
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          color: Colors.deepPurple,
+                                          fontWeight: FontWeight.w700)),
                                   Divider(),
                                   Text(scores[index].toString(),
-                                      style: TextStyle(fontSize: 25)),
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          color: Colors.deepPurple,
+                                          fontWeight: FontWeight.w300,
+                                          fontStyle: FontStyle.italic)),
                                 ],
                               ),
                             );

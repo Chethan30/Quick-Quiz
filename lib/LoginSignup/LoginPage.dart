@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   new Text(
-                    "QuiXam",
+                    "QuickQuiz",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -141,7 +141,11 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontSize: 18,
                     ),
-                    decoration: new InputDecoration(labelText: "USN / ID"),
+                    decoration: new InputDecoration(
+                        labelText: "USN / ID",
+                        labelStyle: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            color: Colors.deepPurple.shade300)),
                     validator: (value) => value.isEmpty
                         ? 'Please fill in the ID (Fid/USN)'
                         : null,
@@ -154,7 +158,11 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontSize: 18,
                     ),
-                    decoration: new InputDecoration(labelText: "Password"),
+                    decoration: new InputDecoration(
+                        labelText: "Password",
+                        labelStyle: TextStyle(
+                            fontStyle: FontStyle.italic,
+                            color: Colors.deepPurple.shade300)),
                     obscureText: true,
                     validator: (value) =>
                         value.isEmpty ? 'Please fill in the password' : null,

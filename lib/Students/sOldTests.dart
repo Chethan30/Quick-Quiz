@@ -25,10 +25,10 @@ class _sOldTestsState extends State<sOldTests> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(247, 216, 189, 1),
+      backgroundColor: Colors.purple.shade50,
       body: new Container(
         height: 1000,
-        color: Color.fromRGBO(247, 216, 189, 1),
+        color: Colors.purple.shade50,
         child: FutureBuilder(
             future: dbRef.once(),
             builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {

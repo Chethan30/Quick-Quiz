@@ -19,86 +19,91 @@ class _takeQuizState extends State<takeQuiz> {
 
   Widget format(int index) {
     return Card(
+      elevation: 5,
+      shadowColor: Colors.deepPurple,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          Row(children: [
-            Expanded(
-                flex: 1,
-                child: Text(
-                  (index + 1).toString() + ")",
-                  style: new TextStyle(fontSize: 20),
-                )),
-            Expanded(
-              flex: 12,
-              child: Text(question[index]),
-            ),
-          ]),
-          Row(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Radio(
-                value: "a",
-                groupValue: selected[index],
-                onChanged: (value) {
-                  setState(() {
-                    selected[index] = value;
-                  });
-                },
+              Row(children: [
+                Expanded(
+                    flex: 1,
+                    child: Text(
+                      (index + 1).toString() + ")",
+                      style: new TextStyle(fontSize: 20),
+                    )),
+                Expanded(
+                  flex: 12,
+                  child: Text(question[index]),
+                ),
+              ]),
+              Row(
+                children: [
+                  Radio(
+                    value: "a",
+                    groupValue: selected[index],
+                    onChanged: (value) {
+                      setState(() {
+                        selected[index] = value;
+                      });
+                    },
+                  ),
+                  Text(
+                    opa[index],
+                  )
+                ],
               ),
-              Text(
-                opa[index],
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Radio(
-                value: "b",
-                groupValue: selected[index],
-                onChanged: (value) {
-                  setState(() {
-                    selected[index] = value;
-                  });
-                },
+              Row(
+                children: [
+                  Radio(
+                    value: "b",
+                    groupValue: selected[index],
+                    onChanged: (value) {
+                      setState(() {
+                        selected[index] = value;
+                      });
+                    },
+                  ),
+                  Text(
+                    opb[index],
+                  )
+                ],
               ),
-              Text(
-                opb[index],
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Radio(
-                value: "c",
-                groupValue: selected[index],
-                onChanged: (value) {
-                  setState(() {
-                    selected[index] = value;
-                  });
-                },
+              Row(
+                children: [
+                  Radio(
+                    value: "c",
+                    groupValue: selected[index],
+                    onChanged: (value) {
+                      setState(() {
+                        selected[index] = value;
+                      });
+                    },
+                  ),
+                  Text(
+                    opc[index],
+                  )
+                ],
               ),
-              Text(
-                opc[index],
-              )
-            ],
-          ),
-          Row(
-            children: [
-              Radio(
-                value: "d",
-                groupValue: selected[index],
-                onChanged: (value) {
-                  setState(() {
-                    selected[index] = value;
-                  });
-                },
+              Row(
+                children: [
+                  Radio(
+                    value: "d",
+                    groupValue: selected[index],
+                    onChanged: (value) {
+                      setState(() {
+                        selected[index] = value;
+                      });
+                    },
+                  ),
+                  Text(
+                    opd[index],
+                  )
+                ],
               ),
-              Text(
-                opd[index],
-              )
-            ],
-          ),
-        ]),
+            ]),
       ),
     );
   }
@@ -124,9 +129,9 @@ class _takeQuizState extends State<takeQuiz> {
     return Scaffold(
       appBar: new AppBar(
         title: new Text(Session_Id.getqname()),
-        backgroundColor: Color.fromRGBO(166, 118, 51, 1),
+        backgroundColor: Colors.deepPurple,
       ),
-      backgroundColor: Color.fromRGBO(247, 216, 189, 1),
+      backgroundColor: Colors.purple.shade50,
       body: Container(
         child: Column(
           children: [
@@ -165,7 +170,11 @@ class _takeQuizState extends State<takeQuiz> {
               ),
             ),
             RaisedButton(
-              child: Text("Submit"),
+              color: Colors.deepPurple,
+              child: Text(
+                "Submit",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
               onPressed: submit,
             )
           ],

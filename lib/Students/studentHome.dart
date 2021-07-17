@@ -11,14 +11,14 @@ class homePage extends StatefulWidget {
 class _homePageState extends State<homePage> {
   int _pageIndex = 0;
   PageController _pageController;
-  String _name=Session_Id.getClassId();
+  String _name = Session_Id.getClassId();
   List<Widget> tabPages = [
     sNewTests(),
     sOldTests(),
   ];
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _pageController = PageController(initialPage: _pageIndex);
   }
@@ -34,7 +34,7 @@ class _homePageState extends State<homePage> {
     return Scaffold(
       appBar: new AppBar(
         title: new Text("$_name"),
-        backgroundColor: Color.fromRGBO(166, 118, 51, 1),
+        backgroundColor: Colors.deepPurple,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageIndex,
@@ -50,7 +50,6 @@ class _homePageState extends State<homePage> {
             title: Text("Tests taken"),
           ),
         ],
-
       ),
       body: PageView(
         children: tabPages,
@@ -59,6 +58,7 @@ class _homePageState extends State<homePage> {
       ),
     );
   }
+
   void onPageChanged(int page) {
     setState(() {
       this._pageIndex = page;
@@ -66,6 +66,7 @@ class _homePageState extends State<homePage> {
   }
 
   void onTabTapped(int index) {
-    this._pageController.animateToPage(index,duration: const Duration(milliseconds: 500),curve: Curves.easeInOut);
+    this._pageController.animateToPage(index,
+        duration: const Duration(milliseconds: 500), curve: Curves.easeInOut);
   }
 }

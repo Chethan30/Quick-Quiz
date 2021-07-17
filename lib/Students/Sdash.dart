@@ -19,7 +19,8 @@ class _SDashState extends State<SDash> {
   final dbRef = FirebaseDatabase.instance.reference().child("Classes");
 
   Future navigateToInsideClass(context) async {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => homePage()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => homePage()));
   }
 
   @override
@@ -28,14 +29,14 @@ class _SDashState extends State<SDash> {
       key: _scaffoldKey,
       appBar: new AppBar(
         title: new Text("Welcome, $_name"),
-        backgroundColor: Color.fromRGBO(166, 118, 51, 1),
+        backgroundColor: Colors.deepPurpleAccent,
       ),
       body: new Container(
         height: 1000,
-        color: Color.fromRGBO(247, 216, 189, 1),
+        color: Colors.purple.shade50,
         child: FutureBuilder(
             future: dbRef
-                .child("S"+Session_Id.getSem())
+                .child("S" + Session_Id.getSem())
                 .child(Session_Id.getSec())
                 .once(),
             builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
@@ -57,7 +58,7 @@ class _SDashState extends State<SDash> {
                   );
                 } else {
                   values.forEach((semester, section) {
-                    if(!(section is String)){
+                    if (!(section is String)) {
                       classes.add(section["tname"]);
                       classesData.add(section["cname"]);
                     }
@@ -72,30 +73,36 @@ class _SDashState extends State<SDash> {
                           child: Column(
                             children: [
                               SizedBox(
-                                width:double.infinity,
+                                width: double.infinity,
                                 child: RaisedButton(
-                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  color: Colors.white,
                                   child: Container(
                                     padding: EdgeInsets.all(25),
                                     child: Align(
                                       alignment: Alignment.centerLeft,
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: <Widget>[
                                           Text(
                                             classesData[index].toString(),
                                             style: new TextStyle(
                                                 fontSize: 25,
-                                                fontWeight: FontWeight.bold),
+                                                fontWeight: FontWeight.bold,
+                                                color:
+                                                    Colors.deepPurple.shade900),
                                           ),
                                           Text(classes[index].toString(),
-                                              style: new TextStyle(fontSize: 20)),
+                                              style: new TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.grey.shade500)),
                                         ],
                                       ),
                                     ),
                                   ),
                                   onPressed: () {
-                                    Session_Id.setClassId(classesData[index].toString());
+                                    Session_Id.setClassId(
+                                        classesData[index].toString());
                                     navigateToInsideClass(context);
                                   },
                                 ),

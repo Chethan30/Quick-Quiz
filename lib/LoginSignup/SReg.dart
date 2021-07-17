@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:quixam/Misc/PasswordUtils.dart';
@@ -64,79 +65,127 @@ class _SRegisterationState extends State<SRegisteration> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text("Registration"),
-          backgroundColor: Color.fromRGBO(166, 118, 51, 1),
+          title: Text("Student Registration"),
+          backgroundColor: Colors.deepPurpleAccent,
         ),
         body: new Container(
-          color: Color.fromRGBO(247, 216, 189, 1),
+          alignment: Alignment.center,
+          color: Colors.purple.shade50,
           height: 800,
           padding: EdgeInsets.all(25),
           child: new Form(
             key: _formKey,
             child: new SingleChildScrollView(
-              child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  new Text(
-                    "Student Registration",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40,
-                        color: Color.fromRGBO(166, 118, 51, 1)),
-                  ),
-                  new TextFormField(
-                    decoration: new InputDecoration(labelText: "Name"),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please fill in your name' : null,
-                    onSaved: (value) => _name = value,
-                  ),
-                  new TextFormField(
-                    decoration: new InputDecoration(labelText: "USN"),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please fill in your USN' : null,
-                    onSaved: (value) => _usn = value,
-                  ),
-                  new TextFormField(
-                    decoration: new InputDecoration(labelText: "Password"),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please fill in your password' : null,
-                    autofocus: false,
-                    obscureText: true,
-                    onSaved: (value) => _pass = value,
-                  ),
-                  new TextFormField(
-                    decoration:
-                        new InputDecoration(labelText: "Confirm Password"),
-                    validator: (value) =>
-                        value != _pass ? 'Passwords did not match' : null,
-                    autofocus: false,
-                    obscureText: true,
-                  ),
-                  new TextFormField(
-                    decoration: new InputDecoration(labelText: "Semester"),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please fill in your semester' : null,
-                    onSaved: (value) => _sem = value,
-                  ),
-                  new TextFormField(
-                    decoration: new InputDecoration(labelText: "Section"),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please fill in your section' : null,
-                    onSaved: (value) => _sec = value,
-                  ),
-                  new TextFormField(
-                    decoration: new InputDecoration(labelText: "Email"),
-                    validator: (value) =>
-                        value.isEmpty ? 'Please fill in your Email' : null,
-                    onSaved: (value) => _email = value,
-                  ),
-                  new RaisedButton(
-                    color: Color.fromRGBO(166, 118, 51, 1),
-                    onPressed: validateAndSubmit,
-                    child: Text('Submit'),
-                  ),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    new Text(
+                      "Student Details",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40,
+                          color: Colors.deepPurple),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(18),
+                    ),
+                    new TextFormField(
+                      style: TextStyle(fontSize: 20),
+                      decoration: new InputDecoration(
+                          labelText: "Name",
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.deepPurple.shade300)),
+                      validator: (value) =>
+                          value.isEmpty ? 'Please fill in your name' : null,
+                      onSaved: (value) => _name = value,
+                    ),
+                    new TextFormField(
+                      style: TextStyle(fontSize: 20),
+                      decoration: new InputDecoration(
+                          labelText: "USN",
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.deepPurple.shade300)),
+                      validator: (value) =>
+                          value.isEmpty ? 'Please fill in your USN' : null,
+                      onSaved: (value) => _usn = value,
+                    ),
+                    new TextFormField(
+                      style: TextStyle(fontSize: 20),
+                      decoration: new InputDecoration(
+                          labelText: "Password",
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.deepPurple.shade300)),
+                      validator: (value) =>
+                          value.isEmpty ? 'Please fill in your password' : null,
+                      autofocus: false,
+                      obscureText: true,
+                      onSaved: (value) => _pass = value,
+                    ),
+                    new TextFormField(
+                      style: TextStyle(fontSize: 20),
+                      decoration: new InputDecoration(
+                          labelText: "Confirm Password",
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.deepPurple.shade300)),
+                      validator: (value) =>
+                          value != _pass ? 'Passwords did not match' : null,
+                      autofocus: false,
+                      obscureText: true,
+                    ),
+                    new TextFormField(
+                      style: TextStyle(fontSize: 20),
+                      decoration: new InputDecoration(
+                          labelText: "Semester",
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.deepPurple.shade300)),
+                      validator: (value) =>
+                          value.isEmpty ? 'Please fill in your semester' : null,
+                      onSaved: (value) => _sem = value,
+                    ),
+                    new TextFormField(
+                      style: TextStyle(fontSize: 20),
+                      decoration: new InputDecoration(
+                          labelText: "Section",
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.deepPurple.shade300)),
+                      validator: (value) =>
+                          value.isEmpty ? 'Please fill in your section' : null,
+                      onSaved: (value) => _sec = value,
+                    ),
+                    new TextFormField(
+                      style: TextStyle(fontSize: 20),
+                      decoration: new InputDecoration(
+                          labelText: "Email",
+                          labelStyle: TextStyle(
+                              fontStyle: FontStyle.italic,
+                              color: Colors.deepPurple.shade300)),
+                      validator: (value) =>
+                          value.isEmpty ? 'Please fill in your Email' : null,
+                      onSaved: (value) => _email = value,
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(18),
+                    ),
+                    new RaisedButton(
+                      color: Colors.deepPurple,
+                      onPressed: validateAndSubmit,
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

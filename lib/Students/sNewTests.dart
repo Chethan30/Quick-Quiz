@@ -25,10 +25,10 @@ class _sNewTestsState extends State<sNewTests> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(247, 216, 189, 1),
+      backgroundColor: Colors.purple.shade50,
       body: new Container(
         height: 1000,
-        color: Color.fromRGBO(247, 216, 189, 1),
+        color: Colors.purple.shade50,
         child: FutureBuilder(
             future: dbRef.once(),
             builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
@@ -69,7 +69,7 @@ class _sNewTestsState extends State<sNewTests> {
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: new Text(
-                            "Congratulations!!! There are no new quizzes!!",
+                            "Congratulations 🎉! There are no new quizzes!!",
                             textAlign: TextAlign.center,
                             style: new TextStyle(
                                 fontSize: 30, fontWeight: FontWeight.bold),
@@ -91,7 +91,7 @@ class _sNewTestsState extends State<sNewTests> {
                               SizedBox(
                                 width: double.infinity,
                                 child: RaisedButton(
-                                  color: Color.fromRGBO(255, 255, 255, 1),
+                                  color: Colors.white,
                                   child: Container(
                                     padding: EdgeInsets.all(25),
                                     child: Align(

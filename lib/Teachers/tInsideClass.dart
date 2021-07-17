@@ -17,7 +17,7 @@ class _tInsideClassState extends State<tInsideClass> {
   List quizzes = new List();
   List quizList = new List();
   final dbRef = FirebaseDatabase.instance.reference();
-  String nqnq,nmqn,nqname;
+  String nqnq, nmqn, nqname;
   List classes;
 
   void validateAndSubmit() async {
@@ -36,7 +36,7 @@ class _tInsideClassState extends State<tInsideClass> {
         }
       } catch (onError) {
         print(onError);
-      }finally{
+      } finally {
         Session_Id.setqname(nqname);
         Session_Id.setTqn(int.parse(nmqn));
       }
@@ -45,12 +45,14 @@ class _tInsideClassState extends State<tInsideClass> {
     _formKey.currentState.reset();
   }
 
-  void navigateToCreateQuiz(context) async{
-    Navigator.push(context, MaterialPageRoute(builder: (context) => createQuiz()));
+  void navigateToCreateQuiz(context) async {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => createQuiz()));
   }
 
-  void navigateToLeaderBoard(context) async{
-    Navigator.push(context, MaterialPageRoute(builder: (context) => leaderboard()));
+  void navigateToLeaderBoard(context) async {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => leaderboard()));
   }
 
   @override
@@ -58,23 +60,21 @@ class _tInsideClassState extends State<tInsideClass> {
     return Scaffold(
         appBar: new AppBar(
           title: new Text("Welcome, $_name"),
-          backgroundColor: Color.fromRGBO(166, 118, 51, 1),
+          backgroundColor: Colors.deepPurple,
         ),
         body: Container(
-          color: Color.fromRGBO(247, 216, 189, 1),
+          color: Colors.purple.shade50,
           padding: EdgeInsets.all(10),
-          child: new Column(
-              children: [
+          child: new Column(children: [
             Expanded(
-              flex: 2,
+              flex: 6,
               child: new Card(
                 child: new Form(
                     key: _formKey,
-                    child: Column(
-                        children: [
-                          Spacer(),
+                    child: Column(children: [
+                      Spacer(),
                       Flexible(
-                        flex: 4,
+                        flex: 5,
                         child: new Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -82,10 +82,10 @@ class _tInsideClassState extends State<tInsideClass> {
                             Expanded(
                               flex: 6,
                               child: new TextFormField(
+                                style: TextStyle(fontSize: 18),
                                 decoration:
-                                new InputDecoration(labelText: "Quiz Name"),
-                                validator: (value) =>
-                                value.isEmpty
+                                    new InputDecoration(labelText: "Quiz Name"),
+                                validator: (value) => value.isEmpty
                                     ? 'Please fill in the quiz name'
                                     : null,
                                 onSaved: (value) => nqname = value,
@@ -95,10 +95,10 @@ class _tInsideClassState extends State<tInsideClass> {
                             Expanded(
                               flex: 3,
                               child: new TextFormField(
-                                decoration:
-                                new InputDecoration(labelText: "No. of Qns"),
-                                validator: (value) =>
-                                value.isEmpty
+                                style: TextStyle(fontSize: 18),
+                                decoration: new InputDecoration(
+                                    labelText: "No. of Qns"),
+                                validator: (value) => value.isEmpty
                                     ? 'Please fill in the Max Qn'
                                     : null,
                                 onSaved: (value) => nmqn = value,
@@ -112,9 +112,12 @@ class _tInsideClassState extends State<tInsideClass> {
                       Flexible(
                         flex: 5,
                         child: new RaisedButton(
-                          color: Color.fromRGBO(166, 118, 51, 1),
+                          color: Colors.deepPurple,
                           onPressed: validateAndSubmit,
-                          child: Text('Submit'),
+                          child: Text(
+                            'Submit',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
                         ),
                       ),
                       Spacer(),
@@ -125,7 +128,13 @@ class _tInsideClassState extends State<tInsideClass> {
               flex: 8,
               child: new Container(
                 child: FutureBuilder(
-                    future: dbRef.child("Classes").child("S"+Session_Id.getSem()).child(Session_Id.getSec()).child(Session_Id.getClassId()).child("Quizzes").once(),
+                    future: dbRef
+                        .child("Classes")
+                        .child("S" + Session_Id.getSem())
+                        .child(Session_Id.getSec())
+                        .child(Session_Id.getClassId())
+                        .child("Quizzes")
+                        .once(),
                     builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
                       if (snapshot.hasData) {
                         quizzes.clear();
@@ -145,40 +154,42 @@ class _tInsideClassState extends State<tInsideClass> {
                           quizzes.add(value["qname"]);
                         });
                         return new ListView.builder(
-                                physics: BouncingScrollPhysics(),
-                                  itemCount: quizzes.length,
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.all(25),
-                                  itemBuilder: (BuildContext context, int index) {
-                                    return Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                            width: double.infinity,
-                                            child: RaisedButton(
-                                              color: Color.fromRGBO(255, 255, 255, 1),
-                                              child: Container(
-                                                padding: EdgeInsets.only(
-                                                    left: 5,
-                                                    top: 20,
-                                                    right: 20,
-                                                    bottom: 20),
-                                                child: Align(
-                                                  alignment: Alignment.centerLeft,
-                                                  child: Text(quizzes[index],style: new TextStyle(fontSize: 30)),
-                                                ),
-                                              ),
-                                              onPressed: () {
-                                                Session_Id.setQname(quizzes[index]);
-                                                navigateToLeaderBoard(context);
-                                              },
+                            physics: BouncingScrollPhysics(),
+                            itemCount: quizzes.length,
+                            shrinkWrap: true,
+                            padding: EdgeInsets.all(25),
+                            itemBuilder: (BuildContext context, int index) {
+                              return Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Column(
+                                    children: [
+                                      SizedBox(
+                                        width: double.infinity,
+                                        child: RaisedButton(
+                                          color: Colors.white,
+                                          child: Container(
+                                            padding: EdgeInsets.only(
+                                                left: 5,
+                                                top: 20,
+                                                right: 20,
+                                                bottom: 20),
+                                            child: Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(quizzes[index],
+                                                  style: new TextStyle(
+                                                      fontSize: 30)),
                                             ),
                                           ),
-                                          SizedBox(height: 10),
-                                        ],)
-                                    );
-                                  });
+                                          onPressed: () {
+                                            Session_Id.setQname(quizzes[index]);
+                                            navigateToLeaderBoard(context);
+                                          },
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                    ],
+                                  ));
+                            });
                       }
                       return Center(child: CircularProgressIndicator());
                     }),

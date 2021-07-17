@@ -4,17 +4,15 @@ import 'package:splashscreen/splashscreen.dart';
 import 'LoginSignup/LoginPage.dart';
 import 'LoginSignup/SomethingWentWrong.dart';
 
-
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget{
+class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
   bool _initialized = false;
   bool _error = false;
 
@@ -26,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       setState(() {
         _initialized = true;
       });
-    } catch(e) {
+    } catch (e) {
       // Set `_error` state to true if Firebase initialization fails
       setState(() {
         _error = true;
@@ -43,20 +41,23 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     // Show error message if initialization failed
-    if(_error) {return new MaterialApp(
-      title: "QuiXam",
-      theme: new ThemeData(
-        primaryColor: Colors.blue,
-      ),
-      home: Center(child: CircularProgressIndicator(),)
-    );
+    if (_error) {
+      return new MaterialApp(
+          title: "QuiXam",
+          theme: new ThemeData(
+            primaryColor: Colors.deepPurple,
+          ),
+          home: Center(
+            child: CircularProgressIndicator(),
+          ));
       return SomethingWentWrong();
     }
 
     return new MaterialApp(
       title: "QuiXam",
+      debugShowCheckedModeBanner: false,
       theme: new ThemeData(
-        primaryColor: Colors.blue,
+        primaryColor: Colors.deepPurple,
       ),
       home: new LoginPage(),
     );

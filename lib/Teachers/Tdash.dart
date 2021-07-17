@@ -88,22 +88,25 @@ class _TDashState extends State<TDash> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: new AppBar(
-          title: new Text("Welcome, $_name"),
-          backgroundColor: Color.fromRGBO(166, 118, 51, 1),
+          title: new Text(
+            "Welcome,   $_name",
+            style: TextStyle(),
+          ),
+          backgroundColor: Colors.deepPurple,
         ),
         body: Container(
-          color: Color.fromRGBO(247, 216, 189, 1),
+          color: Colors.purple.shade50,
           padding: EdgeInsets.all(10),
           child: new Column(children: [
             Flexible(
-              flex: 2,
+              flex: 10,
               child: new Card(
                 child: new Form(
                     key: _formKey,
                     child: Column(children: [
                       Spacer(),
                       Flexible(
-                        flex: 4,
+                        flex: 10,
                         child: new Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -111,6 +114,7 @@ class _TDashState extends State<TDash> {
                             Expanded(
                               flex: 3,
                               child: new TextFormField(
+                                style: TextStyle(fontSize: 20),
                                 decoration:
                                     new InputDecoration(labelText: "Semester"),
                                 validator: (value) => value.isEmpty
@@ -123,6 +127,7 @@ class _TDashState extends State<TDash> {
                             Expanded(
                               flex: 3,
                               child: new TextFormField(
+                                style: TextStyle(fontSize: 20),
                                 decoration:
                                     new InputDecoration(labelText: "Section"),
                                 validator: (value) => value.isEmpty
@@ -135,6 +140,7 @@ class _TDashState extends State<TDash> {
                             Expanded(
                               flex: 6,
                               child: new TextFormField(
+                                style: TextStyle(fontSize: 20),
                                 decoration: new InputDecoration(
                                     labelText: "Class Name"),
                                 validator: (value) => value.isEmpty
@@ -148,12 +154,18 @@ class _TDashState extends State<TDash> {
                         ),
                       ),
                       Spacer(),
+                      Container(
+                        padding: EdgeInsets.all(18),
+                      ),
                       Flexible(
                         flex: 5,
                         child: new RaisedButton(
-                          color: Color.fromRGBO(166, 118, 51, 1),
+                          color: Colors.deepPurple,
                           onPressed: validateAndSubmit,
-                          child: Text('Submit'),
+                          child: Text(
+                            'Submit',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
                         ),
                       ),
                       Spacer(),
